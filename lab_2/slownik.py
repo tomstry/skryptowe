@@ -21,5 +21,3 @@ def zapisz():
 ############################################
 print('Załadowano moduł "{0}"'.format(__name__))
 dictionaty = {}
-zapisz()
-wypisz()

@@ -12,5 +12,5 @@ def Prime(number):
     return True
 
 for args in sys.argv[1::]:
-    if Prime(int(args)) == True:
+    if args.isnumeric() == True and Prime(int(args)) == True:
         print(args)
