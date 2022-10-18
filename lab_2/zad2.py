@@ -1,14 +1,13 @@
 import re
 
-def read():
-    str = input(">> ")
+def read(str):
     y = re.findall('[a-ząćęóśźżł]+',str,re.IGNORECASE)
     x = re.findall('[0-9]+', str)
-    print("Wyrazy:")
-    print(*y)
-    print("Liczby: ")
-    print(*x)
+    return (x,y)
 
-while True:
-    read()
-    
+if __name__ == '__main__':
+    while True:
+        text = input(">> ")
+        t = read(text)
+        print('Wyrazy: ' + str(t[0]))
+        print('Liczby: ' + str(t[1]))
