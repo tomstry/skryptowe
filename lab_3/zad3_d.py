@@ -32,3 +32,5 @@ def nthDayFrom(n, day):
         n = n + 7
     while n > 7:
         n = n - 7
+    
+    return Day(n)
