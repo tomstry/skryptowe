@@ -26,11 +26,6 @@ class Day(Enum):
         return n + 7 if n < -3 else (n - 7 if n > 3 else n)
     
 def nthDayFrom(n, day):
-    n = n + day.value
-    
-    while n < 1:
-        n = n + 7
-    while n > 7:
-        n = n - 7
+    n = n % 7 + day.value
     
     return Day(n)
