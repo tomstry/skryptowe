@@ -10,14 +10,42 @@ class Lesson():
         self.year = year
         self.fullTime = (term.day == Day.MON or term.day == Day.THU or term.day == Day.WED or term.day == Day.THU or term.day == Day.FRI)
     
-    limits = [(8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 17, 0), (8, 0, 20, 0), (17, 0, 20, 0)]
-    
-    def val(self, hour,minute):
-        lim = self.limits[self.term.day.value]
-        return not (lim[0] > hour or lim[2] < hour or (lim[0] == hour and lim[1] > minute) or (lim[2] == hour and lim[3] < minute))
     
     def Validate(self):
         return self.val(self.term.hour, self.term.minute) and self.val(self.term.hour + self.term.duration // 60, self.term.minute + self.term.duration % 60)
+    
+    def val2(self,hour,minute):
+        if self.fullTime == True:
+            if self.term.day.value > 5:
+                return False
+            elif self.term.day.value == 5:
+                if hour < 8 or hour > 17:
+                    return False
+                elif hour == 8 or hour == 17:
+                    if minute > 0:
+                        return False
+            elif hour < 8 or hour > 20:
+                return False
+            elif hour == 8 or hour == 20:
+                if minute > 0:
+                    return False
+            return True
+        if self.fullTime == False:
+            if self.term.day.value < 5 or self.term.day.value > 7:
+                return False
+            elif self.term.day.value == 5:
+                if hour < 17 or hour > 20:
+                    return False
+                elif hour == 17 or hour == 20:
+                    if minute > 0:
+                        return False
+            elif hour < 8 or hour > 20:
+                return False
+            elif hour == 8 or hour == 20:
+                if minute > 0:
+                    return False
+            return True
+            
     
     def __str__(self):
         if self.year == 1:
@@ -96,3 +124,10 @@ class Lesson():
         
         return True
     
+    
+    
+    limits = [(8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 17, 0), (8, 0, 20, 0), (17, 0, 20, 0)]
+    
+    def val(self, hour,minute):
+        lim = self.limits[self.term.day.value]
+        return not (lim[0] > hour or lim[2] < hour or (lim[0] == hour and lim[1] > minute) or (lim[2] == hour and lim[3] < minute))
