@@ -10,9 +10,6 @@ class Klasa(object):
         self._zmienna1 = zm1
         self.__zmienna2 = zm2
     
-    def print_z2(self):
-        print(self.__zmienna2)
-    
     def __del__(self):
         print("wywołano metodę '__del__()'")
 
@@ -25,7 +22,7 @@ class Klasa(object):
     def metodaInstancyjna(self):
         print("wywołano metodę 'metodaInstalacyjna()'")
         print("Zmienna klasowa -> ", self.__class__.tab)
-        print("zmienna instalacyjna -> ", self.tab)
+        print("zmienna instancyjna -> ", self.tab)
         
     #print(obiekt._Klasa__zmienna2)
 

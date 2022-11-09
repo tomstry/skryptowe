@@ -23,7 +23,11 @@ class Day(Enum):
 
     def difference(self, day):
         n = day.value - self.value
-        return n + 7 if n < -3 else (n - 7 if n > 3 else n)
+        if n < -3:
+            n += 7
+        elif n > 3:
+            n -= 7
+        return n
     
 def nthDayFrom(n, day):
     n = n % 7 + day.value
