@@ -1,0 +1,74 @@
+.azure {
+  background: #eff;
+  border: groove #a8a8a8;
+}
+
+header {
+  margin: 10px;
+}
+
+aside {
+  float: right;
+  width: 600px;
+  margin: 0 10px 10px 0;
+}
+
+nav {
+  float: left;
+  margin: 0 0 10px 10px;
+}
+
+main {
+  margin: 100px 0 10px 10px;
+  width: 450px;
+}
+
+footer {
+  margin: 0 10px 0 10px;
+}
+
+ul {
+  padding-right: 5px;
+}
+
+ul li {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 30px;
+  padding-left: 10px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 28px;
+  padding-left: 10px;
+}
+
+blockquote {
+  font-size: 18px;
+  text-align: left;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+footer {
+  font-size: 20px;
+  padding: 8px;
+}
+
+@keyframes colorswap {
+  from {
+    color: red;
+  }
+  to {
+    color: blue;
+  }
+}
+
+aside h1 {
+  animation-name: colorswap;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
