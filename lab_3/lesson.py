@@ -126,8 +126,20 @@ class Lesson():
     
     
     
-    limits = [(8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 20, 0), (8, 0, 17, 0), (8, 0, 20, 0), (17, 0, 20, 0)]
     
-    def val(self, hour,minute):
-        lim = self.limits[self.term.day.value]
-        return not (lim[0] > hour or lim[2] < hour or (lim[0] == hour and lim[1] > minute) or (lim[2] == hour and lim[3] < minute))
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

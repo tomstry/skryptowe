@@ -51,7 +51,7 @@ class Term():
         return True
 
     def equals(self, term):
-        if term.hour == self.hour and term.minute == self.minute and term.duration == self.duration and self._day == term.getDay():
+        if term.hour == self.hour and term.minute == self.minute and term.duration == self.duration and self.day == term.getDay():
             return True
         else:
             return False
