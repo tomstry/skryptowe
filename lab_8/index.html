@@ -1,0 +1,37 @@
+<!-- <html>
+  <body>
+    <div>Treść dokumentu HTML przed skryptem</div>
+    <script>
+      console.log('Tekst 1');
+      window.alert('Tekst 2');
+      document.write('Tekst 3');
+    </script>
+    <div>Treść dokumentu HTML po skrypcie</div>
+  </body>
+</html> -->
+
+<html>
+  <body onload="
+            console.log('Tekst 1');
+            //window.alert('Tekst 2');
+            //document.write('Tekst 3');
+          ">
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <div id="content"></div>
+    <form>
+        <input id="txt" name="pole_tekstowe" type="text">
+        <input id="num" name="pole_liczbowe" type="number">
+        <input id="button" type="button" value="Wypisz">
+      </form>
+    <script>
+        const txt = document.getElementById('txt');
+        const num = document.getElementById('num');
+        const button = document.getElementById('button');
+        button.addEventListener('click',function(){
+            document.getElementById('content').innerText += (txt.value + ' ' + num.value + '\n');
+        })
+    </script>
+  </body>
+</html>
