@@ -3,12 +3,3 @@ $color-azure: #eff;
 *, *::before, *::after {
     box-sizing: border-box;
 }
-
-.azure{
-    background: $color-azure;
-    border: groove #a8a8a8;
-}
-
-@media (max-width: 767px) {
-    
-}
