@@ -1,5 +1,7 @@
 'use strict';
 
+let sumall = 0;
+
 function cyfry(str){
     let sum = 0;
     let splitStr = str.split('');
@@ -23,14 +25,17 @@ function litery(str){
 }
 
 function suma(str){
-    let sum = 0;
     if(!isNaN(parseInt(str))){
-        sum += parseInt(str);
+        sumall += parseInt(str);
     }
-    return sum;
+    return sumall;
 }
-
-let msg = window.prompt('podaj input');
-cyfry(msg);
-litery(msg);
-suma(msg);
+while(true){
+    let msg = window.prompt('podaj input');
+    let numbers = cyfry(msg);
+    let letters = litery(msg);
+    let sum = suma(msg);
+    document.getElementById('txt').innerText += (msg + '\n');
+    document.getElementById('txt').innerText += (numbers + ' ' + letters + ' '+ sum
+    + '\n');
+}
