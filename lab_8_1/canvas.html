@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Page title
+    </title>
+  </head>
+  <body>
+    <main>
+      <h1>
+        Płótno
+      </h1>
+
+      <h1>
+        Canvas
+      </h1>
+
+      <canvas id="canvas"
+              width="400"
+              height="250"
+              style="border:1px solid #000000;">
+        Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
+      </canvas>
+    </main>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+    //    ctx.fillText("Hello World", 10, 50); //Wykreślenie podanego tekstu na płótnie / Drawing given text on canvas
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'black';
+        ctx.beginPath();
+        ctx.moveTo(50,50);
+        ctx.lineTo(50,200);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(110,95,75,1.2 * Math.PI,1.8 * Math.PI,false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(230,95,75,1.2 * Math.PI,1.8 * Math.PI,false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(170,50);
+        ctx.lineTo(170,200);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(290,50);
+        ctx.lineTo(290,200);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(110,245,75,1.2 * Math.PI,1.8 * Math.PI,false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(230 ,245,75,1.2 * Math.PI,1.8 * Math.PI,false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(110,100,30,0,2 * Math.PI);
+        ctx.fill();
+        ctx.fillRect(200,70,60,60);
+    </script>
+  </body>
+</html>
