@@ -30,7 +30,7 @@ function suma(str){
     }
     return sumall;
 }
-let napis = '';
+// let napis = '';
 // while(true){
 //     let msg = window.prompt(napis);
 //     let numbers = cyfry(msg);
