@@ -8,7 +8,7 @@ function App() {
 
     const interval = setInterval(() => {
 
-      if (displayValue === 0) {
+      if (displayValue <= 0) {
         clearInterval(interval);
       } else {
         setDisplayValue(displayValue - 1);
