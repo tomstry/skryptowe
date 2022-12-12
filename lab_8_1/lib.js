@@ -184,5 +184,4 @@ function updateChart(chart){
     chart.data.datasets[0].data.push(books['Pan Tadeusz'].amount);
     chart.update();
 }
-updateChart(wykres);
 initActions();
