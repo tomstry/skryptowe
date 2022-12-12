@@ -5,19 +5,19 @@ let books = {
         author: 'Henryk Sienkiewicz',
         title: 'Potop',
         amount: 1,
-        url: 'ads',
+        url: 'https://i.postimg.cc/GmCDgYPY/potop-b-iext121505387.jpg',
     },
     'Lalka': {
         author: 'Bolesław Prus',
         title: 'Lalka',
         amount: 3,
-        url: 'asdd',
+        url: 'https://i.postimg.cc/MHT1W83S/lalka.jpg',
     },
     'Pan Tadeusz': {
         title: 'Pan Tadeusz',
         author: 'Adam Mickiewicz',
         amount: 5,
-        url: 'dsad',
+        url: 'https://i.postimg.cc/6pRn6ccy/pan-tadeusz-b-iext103751689.jpg',
     },
 };
 
@@ -97,6 +97,7 @@ function borrowbook(parseStr){
                 amount: amountBooks,
             }],
         })
+        updateChart(wykres);
     }else{
         const index = readers.findIndex(reader => reader.name == readerName);
         if(readers[index].books.find(book => book.title == bookName)){
@@ -108,6 +109,7 @@ function borrowbook(parseStr){
                 amount: amountBooks,
             });
         };
+        updateChart(wykres);
     };
 };
 
@@ -132,9 +134,55 @@ function returnbook(parseStr){
                 if(readers[index].books[bookIndex].amount == 0){
                     readers[index].books.splice(bookIndex,1);
                 }
+                updateChart(wykres);
             }
         }
     }
 };
+const ctx = document.getElementById('chart');
 
+const wykres = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Potop','Lalka','Pan Tadeusz'],
+        datasets: [{
+        data: [books['Potop'].amount,books['Lalka'].amount,books['Pan Tadeusz'].amount],
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+});
+
+const canva = document.getElementById('cover');
+let c = canva.getContext('2d');
+
+let img = new Image();
+img.src = books['Potop'].url;
+img.onload = function(){
+    c.drawImage(img,35,0,250,400);
+}
+let img2 = new Image();
+img2.src = books['Lalka'].url;
+img2.onload = function(){
+    c.drawImage(img2,290,0,250,400);
+}
+let img3 = new Image();
+img3.src = books['Pan Tadeusz'].url;
+img3.onload = function(){
+    c.drawImage(img3,545,0,300,400);
+}
+
+function updateChart(chart){
+    chart.data.datasets[0].data.splice(0,3);
+    chart.data.datasets[0].data.push(books['Potop'].amount);
+    chart.data.datasets[0].data.push(books['Lalka'].amount);
+    chart.data.datasets[0].data.push(books['Pan Tadeusz'].amount);
+    chart.update();
+}
+updateChart(wykres);
 initActions();
