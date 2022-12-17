@@ -3,7 +3,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 describe('script.js', () => {
-  it('should correctly identify a file', () => {
+  it('correct file', () => {
     const filePath = path.join(__dirname, 'file.txt');
     fs.writeFileSync(filePath, 'Some file contents');
 
@@ -12,7 +12,7 @@ describe('script.js', () => {
     expect(stdout).toContain('Some file contents');
   });
 
-  it('should correctly identify a directory', () => {
+  it('correct directory', () => {
     const dirPath = path.join(__dirname, 'directory');
     fs.mkdirSync(dirPath);
 
@@ -20,7 +20,7 @@ describe('script.js', () => {
     expect(stdout).toContain(`'${dirPath}' jest katalogiem`);
   });
 
-  it('should handle non-existent paths', () => {
+  it('incorrect path', () => {
     const { stdout } = runScript('non-existent-path');
     expect(stdout).toContain(`'non-existent-path' nie istnieje`);
   });
