@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     });
     req.on('end', () => {
       const fileName = body.split('=')[1];
-
+      
       // Sprawdzenie, czy podana nazwa jest plikiem czy katalogiem
       fs.stat(fileName, (err, stat) => {
         if (err) {
@@ -18,7 +18,10 @@ const server = http.createServer((req, res) => {
           return;
         }
         if (stat.isFile()) {
-          res.end(`'${fileName}' jest plikiem`);
+          fs.readFile(fileName,function(err, data){
+            res.end(`'${fileName}' jest plikiem a jego zawartosc to:\n '${data.toString()}'`);
+          });
+
         } else if (stat.isDirectory()) {
           res.end(`'${fileName}' jest katalogiem`);
         }
