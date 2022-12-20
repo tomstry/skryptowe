@@ -4,32 +4,27 @@ const { spawnSync } = require('child_process');
 
 describe('script.js', () => {
   it('correct file', () => {
-    const filePath = path.join(__dirname, 'file.txt');
-    fs.writeFileSync(filePath, 'Some file contents');
+    // const filePath = path.join(__dirname, 'file.txt');
+    // fs.writeFileSync(filePath, 'Some file contents');
 
-    const { stdout } = runScript(filePath);
-    expect(stdout).toContain(`'${filePath}' jest plikiem, a jego zawartość to:`);
-    expect(stdout).toContain('Some file contents');
+    const { stdout } = spawnSync(process.execPath, ['./script.js', 'file.txt'], {
+      encoding: 'utf-8',
+    });
+    expect(stdout).toContain(`'file.txt' jest plikiem, a jego zawartość to:`);
+    expect(stdout).toContain('Argentyna mistrzem świata <3');
   });
 
   it('correct directory', () => {
-    const dirPath = path.join(__dirname, 'directory');
-    fs.mkdirSync(dirPath);
-
-    const { stdout } = runScript(dirPath);
-    expect(stdout).toContain(`'${dirPath}' jest katalogiem`);
+    const { stdout } = spawnSync(process.execPath, ['./script.js', 'node_modules'], {
+      encoding: 'utf-8',
+    });
+    expect(stdout).toContain(`'node_modules' jest katalogiem`);
   });
 
   it('incorrect path', () => {
-    const { stdout } = runScript('non-existent-path');
-    expect(stdout).toContain(`'non-existent-path' nie istnieje`);
+    const { stdout } = spawnSync(process.execPath, ['./script.js', 'nie-istniejacy-plik'], {
+      encoding: 'utf-8',
+    });
+    expect(stdout).toContain(`'nie-istniejacy-plik' nie istnieje`);
   });
 });
-
-function runScript(path) {
-  const childProcess = spawnSync(process.execPath, ['./script.js', path], {
-    encoding: 'utf-8',
-  });
-
-  return childProcess;
-}
