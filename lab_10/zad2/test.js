@@ -4,9 +4,6 @@ const { spawnSync } = require('child_process');
 
 describe('script.js', () => {
   it('correct file', () => {
-    // const filePath = path.join(__dirname, 'file.txt');
-    // fs.writeFileSync(filePath, 'Some file contents');
-
     const { stdout } = spawnSync(process.execPath, ['./script.js', 'file.txt'], {
       encoding: 'utf-8',
     });

@@ -11,7 +11,6 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       const fileName = body.split('=')[1];
       
-      // Sprawdzenie, czy podana nazwa jest plikiem czy katalogiem
       fs.stat(fileName, (err, stat) => {
         if (err) {
           res.end(`'${fileName}' nie istnieje`);
