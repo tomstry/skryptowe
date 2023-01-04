@@ -110,9 +110,9 @@ describe('GET /json/:name', function () {
       .expect('Content-Type', /html/)
       .expect(200)
       .expect((res) => {
-        var match = res.text.match(/(?<=<tr>).*?(?=<\/tr>)/gm)
+        let match = res.text.match(/(?<=<tr>).*?(?=<\/tr>)/gm)
         for (line in match) {
-          var cell = line.match(/(?<=<td>).*?(?=<\/td>)/gm)
+          let cell = line.match(/(?<=<td>).*?(?=<\/td>)/gm)
           if (cell !== null) {
             assert.equal(eval(cell[0] + cell[1] + cell[2]), cell[3])
           }
